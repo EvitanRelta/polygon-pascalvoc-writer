@@ -16,6 +16,7 @@ Improved upon AndrewCarterUK's pascal-voc-writer. (Link: <https://github.com/And
 ## Example Execution
 
 ### For a single image
+> ###### [back to **_Contents_**](#Table-of-Contents)
 
 Write annotation for `myImage.png` _(width: 100, height: 150)_ :
 
@@ -93,11 +94,11 @@ Output file, `dir\annotation\myImage.xml` :
 </annotation>
 ```
 
-> ###### [back to **_Contents_**](#Table-of-Contents)
-
 <br>
 
 ### For a folder of images
+> ###### [back to **_Contents_**](#Table-of-Contents)
+
 Write annotation for `image1.png` and `image2.png` :
 ```python
 images_dir = r"dir\images\"
@@ -125,5 +126,3 @@ dir
     ├── image1.xml
     ├── image2.xml
 ```
-
-> ###### [back to **_Contents_**](#Table-of-Contents)
