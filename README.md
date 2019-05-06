@@ -12,6 +12,7 @@ Improved upon AndrewCarterUK's pascal-voc-writer. (Link: <https://github.com/And
     - [For a single image](#For-a-single-image)
     - [For a folder of images](#For-a-folder-of-images)
 
+<br>
 
 ## Example Execution
 
@@ -116,6 +117,9 @@ for annotation in list_of_annotations:
     writer.addPolygon("polygon_name", annotation["polygon"])
     writer.save()
 ```
+
+<br>
+
 Resulting directories: 
 ```
 dir
