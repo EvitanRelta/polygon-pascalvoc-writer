@@ -10,7 +10,7 @@ from PIL import Image
 from jinja2 import PackageLoader, Environment
 from xml.sax.saxutils import escape
 
-class Writer:
+class VocWriter:
     def __init__(self, imageDir, annotationDir, imageName, depth=3, database='Unknown', segmented=0):
         environment = Environment(loader=PackageLoader('PolygonModifiedVOCWriter','templates'),keep_trailing_newline=True)
         self.annotation_template = environment.get_template('annotation.xml')
