@@ -116,7 +116,7 @@ for annotation in list_of_annotations:
     writer.addPolygon("polygon_name", annotation["polygon"])
     writer.save()
 ```
-Result: 
+Resulting directories: 
 ```
 dir
 ├── images
