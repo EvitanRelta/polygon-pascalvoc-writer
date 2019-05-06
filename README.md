@@ -93,6 +93,8 @@ Output file, `dir\annotation\myImage.xml` :
 </annotation>
 ```
 
+> ###### [back to **_Contents_**](#Table-of-Contents)
+
 <br>
 
 ### For a folder of images
@@ -123,3 +125,5 @@ dir
     ├── image1.xml
     ├── image2.xml
 ```
+
+> ###### [back to **_Contents_**](#Table-of-Contents)
