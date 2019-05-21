@@ -15,8 +15,8 @@ class VocWriter:
         environment = Environment(loader=PackageLoader('polygon_pascalvoc_writer','templates'),keep_trailing_newline=True)
         self.annotation_template = environment.get_template('annotation.xml')
         
-        self.imageDir = imageDir        
-        self.annotationDir = annotationDir
+        self.imageDir = imageDir if imageDir[-1:] == '/' else imageDir + '/'
+        self.annotationDir = annotationDir if annotationDir[-1:] == '/' else annotationDir + '/'
         self.imageName = imageName
 
         self.template_parameters = {
