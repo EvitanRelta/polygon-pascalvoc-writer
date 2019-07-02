@@ -27,19 +27,31 @@ annotations_dir = r"dir\annotations\"
 image_name = "myImage.png"
 writer = VocWriter(images_dir, annotations_dir, image_name)
 
+# Rectangular bounding box
 box_name = "myLabelBox"
 xmin, ymin, xmax, ymax = 1, 2, 3, 4
-writer.addBndBox(box_name, xmin, ymin, xmax, ymax)
 
-polygon_name = "myPolygon"
-vertices = [
+# 1st polygon
+polygon_1_name = "myPolygon"
+vertices_1 = [
     [1, 2],
     [3, 4],
     [5, 6]
 ]
-writer.addPolygon("myPolygon", vertices)
 
-writer.save()
+# 2nd polygon
+polygon_2_name = "myPolygon"
+vertices_2 = [
+    [10, 20],
+    [30, 40],
+    [50, 60]
+]
+
+writer.addBndBox(box_name, xmin, ymin, xmax, ymax)
+writer.addPolygon(polygon_1_name, vertices_1)
+writer.addPolygon(polygon_2_name, vertices_2)
+
+writer.save()   # Write to XML file in VOC format
 ```
 
 <br>
@@ -92,6 +104,26 @@ Output file, `dir\annotation\myImage.xml` :
             <ymax>6</ymax>
         </bndbox>
     </object>
+    <object>
+        <name>myPolygon</name>
+        <pose>Unspecified</pose>
+        <truncated>0</truncated>
+        <difficult>0</difficult>
+        <polygon>
+            <x1>10</x1>
+            <y1>20</y1>
+            <x2>30</x2>
+            <y2>40</y2>
+            <x3>50</x3>
+            <y3>60</y3>
+        </polygon>
+        <bndbox>
+            <xmin>10</xmin>
+            <ymin>20</ymin>
+            <xmax>50</xmax>
+            <ymax>60</ymax>
+        </bndbox>
+    </object>
 </annotation>
 ```
 
@@ -108,14 +140,26 @@ writer = VocWriter(images_dir, annotations_dir, "")
 
 list_of_annotations = [
     {"image_name" : "image1.png",
-     "polygon" : [[1, 2], [3, 4], [5, 6]]},
+     "polygons" : [
+        [1, 2], [3, 4], [5, 6],
+        [10, 20], [30, 40], [50, 60]
+    ]},
     {"image_name" : "image2.png",
-     "polygon" : [[7, 8], [9, 10], [11, 12]]}
+     "polygons" : [
+        [7, 8], [9, 10], [11, 12],
+        [70, 80], [90, 100], [110, 120]
+    ]}
 ]
 for annotation in list_of_annotations:
-    writer.nextImage(annotation["image_name"])
-    writer.addPolygon("polygon_name", annotation["polygon"])
-    writer.save()
+    # Clears the label data, then sets the image with name = annotation["image_name"]
+    # as the current working image.
+    # It doesn't save the label data. Saving is done by writer.save()
+    writer.nextImage(annotation["image_name"])  
+    
+    for polygon_vertices in annotation["polygons"]:
+        writer.addPolygon("polygon_name", polygon_vertices)
+        
+    writer.save()   # Write to XML file in VOC format
 ```
 
 <br>
