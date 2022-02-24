@@ -7,6 +7,22 @@ Improved upon AndrewCarterUK's [Pascal VOC Writer](https://github.com/AndrewCart
 
 <br>
 
+## Installation
+
+```bash
+$ pip install polygon-pascalvoc-writer
+```
+
+<br>
+
+Importing:
+
+```python
+from polygon_pascalvoc_writer import VocWriter
+```
+
+<br>
+
 ## Table of Contents
 
 >- [Polygon Pascal VOC Writer](#Polygon-Pascal-VOC-Writer)
@@ -25,6 +41,8 @@ Improved upon AndrewCarterUK's [Pascal VOC Writer](https://github.com/AndrewCart
 Write annotation for `myImage.png` _(width: 100, height: 150)_ :
 
 ```python
+from polygon_pascalvoc_writer import VocWriter
+
 images_dir = r"dir\images\"
 annotations_dir = r"dir\annotations\"
 image_name = "myImage.png"
@@ -137,6 +155,8 @@ Output file, `dir\annotation\myImage.xml` :
 
 Write annotation for `image1.png` and `image2.png` :
 ```python
+from polygon_pascalvoc_writer import VocWriter
+
 images_dir = r"dir\images\"
 annotations_dir = r"dir\annotations\"
 writer = VocWriter(images_dir, annotations_dir, "")

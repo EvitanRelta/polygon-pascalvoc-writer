@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f:
 
 setup(
     name='polygon-pascalvoc-writer',
-    version='1.0.2',
+    version='1.0.3',
     description='For generating Pascal VOC XML image annotation files',
     long_description=long_description,
     long_description_content_type="text/markdown",
