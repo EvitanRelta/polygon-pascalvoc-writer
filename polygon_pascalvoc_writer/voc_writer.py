@@ -66,7 +66,7 @@ class VocWriter:
         imageWidth, imageHeight = self.getImageSize()
         _ = self.template_parameters
         _['filename'] = escape(Path.basename(self.imageName))
-        _['folder'] = escape(Path.basename(Path.abspath(self.imageDir)[:-1]))
+        _['folder'] = escape(Path.basename(Path.abspath(self.imageDir)))
         _['path'] = escape(Path.abspath(imagePath))
         _['width'] = imageWidth
         _['height'] = imageHeight
