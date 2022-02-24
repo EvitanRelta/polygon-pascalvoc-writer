@@ -1,7 +1,9 @@
 # Polygon Pascal VOC Writer
 
-A simple python module to generate Pascal VOC XML image annotation files.
-<br>Currently only supports bounding-boxes and polygons.
+Simple python module to generate Pascal VOC XML image annotation files.
+
+- currently supports polygons & bounding-boxes
+- automatically detects image size
 
 Improved upon AndrewCarterUK's [Pascal VOC Writer](https://github.com/AndrewCarterUK/pascal-voc-writer).
 
@@ -194,9 +196,8 @@ list_of_annotations = [
     }
 ]
 for annotation in list_of_annotations:
-    # Clears the label data, then sets the image with
-    # name matching annotation["image_name"] as the current working image.
-    # Doesn't save the label data. Saving is done by writer.save()
+    # Clears unsaved polygons/boxes, and
+    # sets working-image to image matching annotation["image_name"].
     writer.nextImage(annotation["image_name"])  
     
     for polygon_vertices in annotation["polygons"]:
