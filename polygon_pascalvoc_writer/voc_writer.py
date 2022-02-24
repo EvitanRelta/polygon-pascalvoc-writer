@@ -12,7 +12,7 @@ from xml.sax.saxutils import escape
 
 class VocWriter:
     def __init__(self, imageDir, annotationDir, imageName, depth=3, database='Unknown', segmented=0):
-        environment = Environment(loader=PackageLoader('PolygonModifiedVOCWriter','templates'),keep_trailing_newline=True)
+        environment = Environment(loader=PackageLoader('polygon_pascalvoc_writer','templates'),keep_trailing_newline=True)
         self.annotation_template = environment.get_template('annotation.xml')
         
         self.imageDir = imageDir        
