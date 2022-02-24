@@ -62,7 +62,7 @@ class VocWriter:
         })
 
     def save(self):
-        imagePath = self.imageDir + self.imageName
+        imagePath = Path.join(self.imageDir, self.imageName)
         imageWidth, imageHeight = self.getImageSize()
         _ = self.template_parameters
         _['filename'] = escape(Path.basename(self.imageName))
@@ -71,13 +71,14 @@ class VocWriter:
         _['width'] = imageWidth
         _['height'] = imageHeight
         
-        annotationPath = self.annotationDir + Path.splitext(self.imageName)[0] + '.xml'
+        annotationName = Path.splitext(self.imageName)[0] + '.xml'
+        annotationPath = Path.join(self.annotationDir, annotationName)
         with open(annotationPath, 'w') as file:
             content = self.annotation_template.render(**self.template_parameters)
             file.write(content)
     
     def getImageSize(self):
-        imagePath = self.imageDir + self.imageName
+        imagePath = Path.join(self.imageDir, self.imageName)
         imageWidth, imageHeight = Image.open(imagePath).size
         return imageWidth, imageHeight
         
