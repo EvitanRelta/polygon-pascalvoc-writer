@@ -1,8 +1,11 @@
 # Polygon Pascal VOC Writer
 
-A simple python module to generate Pascal VOC xml annotation files. Currently only supports boundingBoxes and polygons.
+A simple python module to generate Pascal VOC XML image annotation files.
+<br>Currently only supports bounding-boxes and polygons.
 
-Improved upon AndrewCarterUK's pascal-voc-writer. (Link: <https://github.com/AndrewCarterUK/pascal-voc-writer>)
+Improved upon AndrewCarterUK's [Pascal VOC Writer](https://github.com/AndrewCarterUK/pascal-voc-writer).
+
+<br>
 
 ## Table of Contents
 
@@ -30,6 +33,7 @@ writer = VocWriter(images_dir, annotations_dir, image_name)
 # Rectangular bounding box
 box_name = "myLabelBox"
 xmin, ymin, xmax, ymax = 1, 2, 3, 4
+writer.addBndBox(box_name, xmin, ymin, xmax, ymax)
 
 # 1st polygon
 polygon_1_name = "myPolygon"
@@ -38,6 +42,7 @@ vertices_1 = [
     [3, 4],
     [5, 6]
 ]
+writer.addPolygon(polygon_1_name, vertices_1)
 
 # 2nd polygon
 polygon_2_name = "myPolygon"
@@ -46,12 +51,10 @@ vertices_2 = [
     [30, 40],
     [50, 60]
 ]
-
-writer.addBndBox(box_name, xmin, ymin, xmax, ymax)
-writer.addPolygon(polygon_1_name, vertices_1)
 writer.addPolygon(polygon_2_name, vertices_2)
 
-writer.save()   # Write to XML file in VOC format
+# Write to XML file in VOC format
+writer.save()
 ```
 
 <br>
@@ -139,27 +142,32 @@ annotations_dir = r"dir\annotations\"
 writer = VocWriter(images_dir, annotations_dir, "")
 
 list_of_annotations = [
-    {"image_name" : "image1.png",
-     "polygons" : [
-        [1, 2], [3, 4], [5, 6],
-        [10, 20], [30, 40], [50, 60]
-    ]},
-    {"image_name" : "image2.png",
-     "polygons" : [
-        [7, 8], [9, 10], [11, 12],
-        [70, 80], [90, 100], [110, 120]
-    ]}
+    {
+        "image_name": "image1.png",
+        "polygons": [
+            [1, 2], [3, 4], [5, 6],
+            [10, 20], [30, 40], [50, 60]
+        ]
+    },
+    {
+        "image_name": "image2.png",
+        "polygons": [
+            [7, 8], [9, 10], [11, 12],
+            [70, 80], [90, 100], [110, 120]
+        ]
+    }
 ]
 for annotation in list_of_annotations:
-    # Clears the label data, then sets the image with name = annotation["image_name"]
-    # as the current working image.
-    # It doesn't save the label data. Saving is done by writer.save()
+    # Clears the label data, then sets the image with
+    # name matching annotation["image_name"] as the current working image.
+    # Doesn't save the label data. Saving is done by writer.save()
     writer.nextImage(annotation["image_name"])  
     
     for polygon_vertices in annotation["polygons"]:
         writer.addPolygon("polygon_name", polygon_vertices)
-        
-    writer.save()   # Write to XML file in VOC format
+
+    # Write to XML file in VOC format
+    writer.save()
 ```
 
 <br>
