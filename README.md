@@ -43,8 +43,8 @@ Write annotation for `myImage.png` _(width: 100, height: 150)_ :
 ```python
 from polygon_pascalvoc_writer import VocWriter
 
-images_dir = r"dir\images\"
-annotations_dir = r"dir\annotations\"
+images_dir = "dir/images/"
+annotations_dir = "dir/annotations/"
 image_name = "myImage.png"
 writer = VocWriter(images_dir, annotations_dir, image_name)
 
@@ -77,13 +77,13 @@ writer.save()
 
 <br>
 
-Output file, `dir\annotation\myImage.xml` :
+Output file, `dir/annotation/myImage.xml` :
 
 ```xml
 <annotation>
     <folder>images</folder>    
     <filename>myImage.png</filename>
-    <path>dir\images\myImage.png</path>
+    <path>absolutePathTo/dir/images/myImage.png</path>
     <source>
         <database>Unknown</database>
     </source>
@@ -157,8 +157,8 @@ Write annotation for `image1.png` and `image2.png` :
 ```python
 from polygon_pascalvoc_writer import VocWriter
 
-images_dir = r"dir\images\"
-annotations_dir = r"dir\annotations\"
+images_dir = "dir/images/"
+annotations_dir = "dir/annotations/"
 writer = VocWriter(images_dir, annotations_dir, "")
 
 list_of_annotations = [
